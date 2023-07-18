@@ -66,13 +66,13 @@ that's it
 
 
     ```js
-    exports.handler = async function(event,     context) {
-        event.Records.forEach(record => {
-            const { body } = record;
-            console.log(body);
-        });
-        return {};
-    }
+        exports.handler = async function(event,  context) {
+            event.Records.forEach(record => {
+                const { body } = record;
+                console.log(body);
+            });
+            return {};
+        }
     ```
     - insert the code in index.js
     - lambda has to get permission to read and delete from the queue
