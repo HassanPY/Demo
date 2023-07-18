@@ -43,3 +43,20 @@ If record name left empty you get this error:
     ```shell
     dig crm.example1.com
     ```
+
+## Create a Static Web Site on S3
+
+Review S3staticweb.md
+
+## Create Alias Records.
+To demo alias, create a static web site in S3.
+
+- Delete the previous records
+- create record
+- keep record name empty.
+- choose A record type
+- Enable Alias
+- Route traffic, choose S3 website
+- choose the region where bucket located
+- choose s3 endpoint
+- Create records.
