@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo yum update -y
+sudo yum install -y httpd wget php jq
+sudo wget https://raw.githubusercontent.com/pandeymahendra/aws/master/index.php -P /var/www/html 
+sudo systemctl start httpd
+sudo systemctl enable httpd
