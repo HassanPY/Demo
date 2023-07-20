@@ -10,38 +10,55 @@
 - Create Database
 
 
-## Install MySQL client on EC2 or local machine 
+## Install MySQL client on EC2 or local machine or AWS Cloud9 service
 
 1. Open a terminal window. 
 
-2. Install the MySQL Community repository:
+2. Install the MySQL Community repository: (incase this option is not working (dnf command not found) try option 2.1)
+
+  ```shell
+  $ sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm 
+  $ sudo ls -lrt
+  ```
+  - Install the MySQL server:
+  ```shell
+  $ sudo dnf install mysql80-community-release-el9-1.noarch.rpm
+  $ dnf repolist enabled | grep "mysql.*-community.*"
+  $ sudo dnf install mysql-community-server
+  ```
+  - Start the MySQL server:
+
+  ```shell
+  $ sudo systemctl start mysqld
+  $ sudo mysql -V
+  ```
+
+2.1. Option 2 to install MySQL
 
 ```shell
-sudo wget https://dev.mysql.com/get/mysql80-community-release-el9-1.noarch.rpm 
-sudo ls -lrt
-```
-3. Install the MySQL server:
-```shell
-sudo dnf install mysql80-community-release-el9-1.noarch.rpm
-dnf repolist enabled | grep "mysql.*-community.*"
-sudo dnf install mysql-community-server
-```
-4. Start the MySQL server:
+  #  this command updates all packages to the latest version
+    $ sudo yum update -y 
 
-```shell
-sudo systemctl start mysqld
-sudo mysql -V
+  # this command installs MySQL server on your machine, it also creates a systemd service
+    $ sudo yum install -y mariadb-server
+
+  # this command enables the service created in previous step
+    $ sudo systemctl enable mariadb
+
+  # this command starts the MySQL server service on your Linux instance
+   $ sudo systemctl start mariadb
 ```
-5. Access MySql server 
+
+3. Access MySql server 
 ```shell
-mysql -h <MySQL instance endpoint> -P<portnumber> -u admin  -p 
+$ mysql -h <MySQL instance endpoint> -P<portnumber> -u admin  -p 
 ```
 
 ## Connecting to DB from laptop terminal 
 
 Example:
 ```shell
-sudo mysql -h mysql–instance1.123456789012.us-east-1.rds.amazonaws.com -P 3306 -u mymasteruser -p
+$ sudo mysql -h mysql–instance1.123456789012.us-east-1.rds.amazonaws.com -P 3306 -u mymasteruser -p
 ```
 ## 
 
